@@ -1,44 +1,147 @@
 {
-  "name": "ep-scroll-to",
-  "version": "0.0.0",
+  "name": "@eutrepe/ng-ep-scroll-to",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "npm run build:lib && npm run build:showcase",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "format:check": "prettier --list-different 'projects/**/*.ts'",
+    "format:write": "prettier --write 'projects/**/*.ts'",
+    "test:lib-coverage": "ng test ep-scroll-to --code-coverage --watch=false",
+    "report-coverage:lib": "cat ./coverage/ep-scroll-to/lcov.info | codecov",
+    "copy:readme": "copyfiles ./README.md ./dist/ep-scroll-to",
+    "copy:license": "copyfiles ./LICENSE.md ./dist/ep-scroll-to",
+    "copy:changelog": "copyfiles ./CHANGELOG.md ./dist/ep-scroll-to",
+    "build:lib": "npm run copy:readme && npm run copy:license && npm run copy:changelog && ng build ep-scroll-to --prod",
+    "build:demo": "ng build ep-scroll-to-showcase --prod --base-href='https://Eutrepe.github.io/ng-ep-scroll-to/'",
+    "publish:demo": "npx angular-cli-ghpages --dir=./dist/ep-scroll-to-showcase",
+    "publish:lib": "cd dist/ep-scroll-to && npx semantic-release",
+    "semantic-release": "semantic-release",
+    "adjust-version": "npm-run-all adjust-version:*",
+    "adjust-version:lib": "rjp projects/ep-scroll-to/package.json version $VERSION",
+    "adjust-version:main": "rjp package.json version $VERSION"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
-    "@angular/animations": "~10.2.0",
-    "@angular/common": "~10.2.0",
-    "@angular/compiler": "~10.2.0",
-    "@angular/core": "~10.2.0",
-    "@angular/forms": "~10.2.0",
-    "@angular/platform-browser": "~10.2.0",
-    "@angular/platform-browser-dynamic": "~10.2.0",
-    "@angular/router": "~10.2.0",
-    "rxjs": "~6.6.0",
-    "tslib": "^2.0.0",
-    "zone.js": "~0.10.2"
+    "@angular/animations": "~10.2.3",
+    "@angular/common": "~10.2.3",
+    "@angular/compiler": "~10.2.3",
+    "@angular/core": "~10.2.3",
+    "@angular/forms": "~10.2.3",
+    "@angular/platform-browser": "~10.2.3",
+    "@angular/platform-browser-dynamic": "~10.2.3",
+    "@angular/router": "~10.2.3",
+    "rxjs": "~6.6.3",
+    "tslib": "^2.0.3",
+    "zone.js": "~0.10.3"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~0.1002.0",
     "@angular/cli": "~10.2.0",
-    "@angular/compiler-cli": "~10.2.0",
-    "@types/node": "^12.11.1",
-    "@types/jasmine": "~3.5.0",
-    "@types/jasminewd2": "~2.0.3",
-    "codelyzer": "^6.0.0",
+    "@angular/compiler-cli": "~10.2.3",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@commitlint/prompt": "^11.0.0",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/exec": "^5.0.0",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/github": "^7.2.0",
+    "@types/jasmine": "^3.6.2",
+    "@types/jasminewd2": "~2.0.8",
+    "@types/node": "^12.19.6",
+    "codecov": "^3.8.1",
+    "codelyzer": "^6.0.1",
+    "copyfiles": "^2.4.0",
+    "husky": "^4.3.0",
     "jasmine-core": "~3.6.0",
-    "jasmine-spec-reporter": "~5.0.0",
-    "karma": "~5.0.0",
+    "jasmine-spec-reporter": "~5.0.2",
+    "karma": "~5.2.3",
     "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage-istanbul-reporter": "~3.0.2",
-    "karma-jasmine": "~4.0.0",
-    "karma-jasmine-html-reporter": "^1.5.0",
+    "karma-coverage-istanbul-reporter": "~3.0.3",
+    "karma-firefox-launcher": "^2.1.0",
+    "karma-jasmine": "~4.0.1",
+    "karma-jasmine-html-reporter": "^1.5.4",
+    "lint-staged": "^10.5.1",
+    "ng-packagr": "^10.1.2",
+    "prettier": "^2.2.0",
     "protractor": "~7.0.0",
+    "semantic-release": "^17.2.4",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.0.2"
+    "typescript": "~4.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "projects/**/*.ts": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eutrepe/ng-ep-scroll-to.git"
+  },
+  "description": "Directive and Service for Angular for scroll to section",
+  "author": "Maciej Bobrowski",
+  "bugs": {
+    "url": "https://github.com/Eutrepe/ng-ep-scroll-to/issues"
+  },
+  "homepage": "https://github.com/Eutrepe/ng-ep-scroll-to#readme",
+  "keywords": [
+    "angular",
+    "javascript",
+    "typescript",
+    "directive",
+    "service",
+    "scroll to"
+  ],
+  "license": "MIT",
+  "release": {
+    "analyzeCommits": "@semantic-release/commit-analyzer",
+    "verifyConditions": "@semantic-release/npm",
+    "prepare": "@semantic-release/npm",
+    "generateNotes": "@semantic-release/release-notes-generator",
+    "publish": "@semantic-release/npm",
+    "success": false,
+    "fail": false,
+    "branch": "master",
+    "npmPublish": true,
+    "tarballDir": "dist",
+    "assets": "dist/*.tgz",
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "CHANGELOG.md"
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md"
+          ]
+        }
+      ],
+      "@semantic-release/npm"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

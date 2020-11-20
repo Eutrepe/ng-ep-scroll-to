@@ -2,5 +2,167 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "ep-scroll-to": {
+      "projectType": "library",
+      "root": "projects/ep-scroll-to",
+      "sourceRoot": "projects/ep-scroll-to/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ep-scroll-to/tsconfig.lib.json",
+            "project": "projects/ep-scroll-to/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ep-scroll-to/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ep-scroll-to/src/test.ts",
+            "tsConfig": "projects/ep-scroll-to/tsconfig.spec.json",
+            "karmaConfig": "projects/ep-scroll-to/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ep-scroll-to/tsconfig.lib.json",
+              "projects/ep-scroll-to/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ep-scroll-to-showcase": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/ep-scroll-to-showcase",
+      "sourceRoot": "projects/ep-scroll-to-showcase/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ep-scroll-to-showcase",
+            "index": "projects/ep-scroll-to-showcase/src/index.html",
+            "main": "projects/ep-scroll-to-showcase/src/main.ts",
+            "polyfills": "projects/ep-scroll-to-showcase/src/polyfills.ts",
+            "tsConfig": "projects/ep-scroll-to-showcase/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/ep-scroll-to-showcase/src/favicon.ico",
+              "projects/ep-scroll-to-showcase/src/assets"
+            ],
+            "styles": [
+              "projects/ep-scroll-to-showcase/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ep-scroll-to-showcase/src/environments/environment.ts",
+                  "with": "projects/ep-scroll-to-showcase/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ep-scroll-to-showcase:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ep-scroll-to-showcase:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ep-scroll-to-showcase:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ep-scroll-to-showcase/src/test.ts",
+            "polyfills": "projects/ep-scroll-to-showcase/src/polyfills.ts",
+            "tsConfig": "projects/ep-scroll-to-showcase/tsconfig.spec.json",
+            "karmaConfig": "projects/ep-scroll-to-showcase/karma.conf.js",
+            "assets": [
+              "projects/ep-scroll-to-showcase/src/favicon.ico",
+              "projects/ep-scroll-to-showcase/src/assets"
+            ],
+            "styles": [
+              "projects/ep-scroll-to-showcase/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ep-scroll-to-showcase/tsconfig.app.json",
+              "projects/ep-scroll-to-showcase/tsconfig.spec.json",
+              "projects/ep-scroll-to-showcase/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/ep-scroll-to-showcase/e2e/protractor.conf.js",
+            "devServerTarget": "ep-scroll-to-showcase:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ep-scroll-to-showcase:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "ep-scroll-to"
 }

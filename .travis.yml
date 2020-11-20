@@ -1,0 +1,36 @@
+dist: bionic
+language: node_js
+node_js:
+- "12"
+os:
+- linux
+services:
+  - xvfb
+addons:
+   firefox: "82.0"
+jobs:
+  include:
+  - stage: lint
+    script:
+    - ng lint
+  - stage: test
+    script:
+    - npm run test:lib-coverage
+    - npm run report-coverage:lib
+  - stage: build & publish showcase
+    script:
+    - npm run build:demo
+    deploy:
+      provider: pages
+      cleanup: false
+      keep_history: false
+      strategy: git
+      token: $GH_TOKEN
+      local_dir: dist/ep-scroll-to-showcase
+      edge: true
+    if: branch = master
+  - stage: build & publish lib
+    script:
+    - npm run build:lib
+    - npm run publish:lib
+    if: branch = master
