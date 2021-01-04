@@ -7,7 +7,7 @@ os:
 services:
   - xvfb
 addons:
-   firefox: "82.0"
+   firefox: "83.0"
 jobs:
   include:
   - stage: lint

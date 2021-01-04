@@ -1,17 +1,52 @@
 {
-  "pkgRoot": "dist/ep-intersection-observer",
-  "plugins": [
-    "@semantic-release/commit-analyzer",
-    "@semantic-release/release-notes-generator",
-    "@semantic-release/changelog",
-    "@semantic-release/npm",
-    ["@semantic-release/exec", {
-      "prepareCmd": "VERSION=${nextRelease.version} npm run adjust-version"
-    }],
-    ["@semantic-release/git", {
-      "assets": ["package.json", "projects/ep-intersection-observer/package.json", "CHANGELOG.md"],
-      "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-    }],
-    "@semantic-release/github"
-  ]
+  "analyzeCommits": "@semantic-release/commit-analyzer",
+    "verifyConditions": "@semantic-release/npm",
+    "prepare": "@semantic-release/npm",
+    "generateNotes": "@semantic-release/release-notes-generator",
+    "publish": "@semantic-release/npm",
+    "success": false,
+    "fail": false,
+    "branch": "master",
+    "npmPublish": true,
+    "tarballDir": "dist",
+    "assets": "dist/*.tgz",
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "CHANGELOG.md"
+        }
+      ],
+      "@semantic-release/npm",
+      [
+        "@semantic-release/exec",
+        {
+          "prepareCmd": "VERSION=${nextRelease.version} npm run adjust-version"
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json",
+            "projects/ep-scroll-to/package.json",
+            "README.md",
+            "projects/ep-scroll-to/README.md",
+            "CHANGELOG.md",
+            "projects/ep-scroll-to/CHANGELOG.md",
+            "LICENSE.md",
+            "projects/ep-scroll-to/LICENSE.md"
+          ],
+          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "assets": "release/*.tgz"
+        }
+      ]
+    ]
 }

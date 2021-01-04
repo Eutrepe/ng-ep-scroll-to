@@ -1,6 +1,30 @@
 {
   "name": "@eutrepe/ng-ep-scroll-to",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eutrepe/ng-ep-scroll-to.git"
+  },
+  "description": "Directive and Service for Angular for scroll to section",
+  "author": "Maciej Bobrowski",
+  "bugs": {
+    "url": "https://github.com/Eutrepe/ng-ep-scroll-to/issues"
+  },
+  "homepage": "https://github.com/Eutrepe/ng-ep-scroll-to#readme",
+  "keywords": [
+    "angular",
+    "javascript",
+    "typescript",
+    "directive",
+    "service",
+    "scroll to"
+  ],
+  "engines": {
+    "node": ">=10.9.0 <13.0.0",
+    "yarn": ">=1.22.4 <2"
+  },
+  "license": "MIT",
+  "private": false,
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -12,9 +36,9 @@
     "format:write": "prettier --write 'projects/**/*.ts'",
     "test:lib-coverage": "ng test ep-scroll-to --code-coverage --watch=false",
     "report-coverage:lib": "cat ./coverage/ep-scroll-to/lcov.info | codecov",
-    "copy:readme": "copyfiles ./README.md ./dist/ep-scroll-to",
-    "copy:license": "copyfiles ./LICENSE.md ./dist/ep-scroll-to",
-    "copy:changelog": "copyfiles ./CHANGELOG.md ./dist/ep-scroll-to",
+    "copy:readme": "copyfiles ./README.md ./projects/ep-scroll-to",
+    "copy:license": "copyfiles ./LICENSE.md ./projects/ep-scroll-to",
+    "copy:changelog": "copyfiles ./CHANGELOG.md ./projects/ep-scroll-to",
     "build:lib": "npm run copy:readme && npm run copy:license && npm run copy:changelog && ng build ep-scroll-to --prod",
     "build:demo": "ng build ep-scroll-to-showcase --prod --base-href='https://Eutrepe.github.io/ng-ep-scroll-to/'",
     "publish:demo": "npx angular-cli-ghpages --dir=./dist/ep-scroll-to-showcase",
@@ -24,7 +48,6 @@
     "adjust-version:lib": "rjp projects/ep-scroll-to/package.json version $VERSION",
     "adjust-version:main": "rjp package.json version $VERSION"
   },
-  "private": false,
   "dependencies": {
     "@angular/animations": "~10.2.3",
     "@angular/common": "~10.2.3",
@@ -34,6 +57,7 @@
     "@angular/platform-browser": "~10.2.3",
     "@angular/platform-browser-dynamic": "~10.2.3",
     "@angular/router": "~10.2.3",
+    "@eutrepe/ep-scroll-to": "^1.0.1",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.3",
     "zone.js": "~0.10.3"
@@ -51,11 +75,11 @@
     "@semantic-release/github": "^7.2.0",
     "@types/jasmine": "^3.6.2",
     "@types/jasminewd2": "~2.0.8",
-    "@types/node": "^12.19.6",
+    "@types/node": "^12.19.9",
     "codecov": "^3.8.1",
     "codelyzer": "^6.0.1",
-    "copyfiles": "^2.4.0",
-    "husky": "^4.3.0",
+    "copyfiles": "^2.4.1",
+    "husky": "^4.3.6",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.2",
     "karma": "~5.2.3",
@@ -64,11 +88,11 @@
     "karma-firefox-launcher": "^2.1.0",
     "karma-jasmine": "~4.0.1",
     "karma-jasmine-html-reporter": "^1.5.4",
-    "lint-staged": "^10.5.1",
+    "lint-staged": "^10.5.3",
     "ng-packagr": "^10.1.2",
-    "prettier": "^2.2.0",
+    "prettier": "^2.2.1",
     "protractor": "~7.0.0",
-    "semantic-release": "^17.2.4",
+    "semantic-release": "^17.3.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.5"
@@ -90,58 +114,9 @@
       "@commitlint/config-conventional"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Eutrepe/ng-ep-scroll-to.git"
-  },
-  "description": "Directive and Service for Angular for scroll to section",
-  "author": "Maciej Bobrowski",
-  "bugs": {
-    "url": "https://github.com/Eutrepe/ng-ep-scroll-to/issues"
-  },
-  "homepage": "https://github.com/Eutrepe/ng-ep-scroll-to#readme",
-  "keywords": [
-    "angular",
-    "javascript",
-    "typescript",
-    "directive",
-    "service",
-    "scroll to"
-  ],
-  "license": "MIT",
-  "release": {
-    "analyzeCommits": "@semantic-release/commit-analyzer",
-    "verifyConditions": "@semantic-release/npm",
-    "prepare": "@semantic-release/npm",
-    "generateNotes": "@semantic-release/release-notes-generator",
-    "publish": "@semantic-release/npm",
-    "success": false,
-    "fail": false,
-    "branch": "master",
-    "npmPublish": true,
-    "tarballDir": "dist",
-    "assets": "dist/*.tgz",
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      [
-        "@semantic-release/changelog",
-        {
-          "changelogFile": "CHANGELOG.md"
-        }
-      ],
-      [
-        "@semantic-release/git",
-        {
-          "assets": [
-            "CHANGELOG.md"
-          ]
-        }
-      ],
-      "@semantic-release/npm"
-    ]
-  },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/",
+    "tag": "latest"
   }
 }

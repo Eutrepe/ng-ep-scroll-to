@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
+import { EpScrollToDirective } from './directives/ep-scroll-to.directive';
 
 @NgModule({
-  declarations: [],
+  declarations: [EpScrollToDirective],
   imports: [
   ],
   exports: []
