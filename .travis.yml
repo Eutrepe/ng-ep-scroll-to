@@ -1,13 +1,13 @@
 dist: bionic
 language: node_js
 node_js:
-- "12"
+- "14"
 os:
 - linux
 services:
   - xvfb
 addons:
-   firefox: "83.0"
+   firefox: "87.0"
 jobs:
   include:
   - stage: lint

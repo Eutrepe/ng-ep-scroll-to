@@ -20,7 +20,7 @@
     "scroll to"
   ],
   "engines": {
-    "node": ">=10.9.0 <13.0.0",
+    "node": ">=10.9.0 <= 14.0.0",
     "yarn": ">=1.22.4 <2"
   },
   "license": "MIT",
@@ -28,7 +28,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npm run build:lib && npm run build:showcase",
+    "build": "npm run build:lib && npm run build:demo",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
