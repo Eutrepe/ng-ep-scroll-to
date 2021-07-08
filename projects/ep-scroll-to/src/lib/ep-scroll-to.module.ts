@@ -3,8 +3,7 @@ import { EpScrollToDirective } from './directives/ep-scroll-to.directive';
 
 @NgModule({
   declarations: [EpScrollToDirective],
-  imports: [
-  ],
-  exports: []
+  imports: [],
+  exports: [EpScrollToDirective],
 })
-export class EpScrollToModule { }
+export class EpScrollToModule {}
