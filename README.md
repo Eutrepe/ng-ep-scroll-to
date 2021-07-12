@@ -3,6 +3,7 @@
 
 ![GitHub](https://img.shields.io/github/license/Eutrepe/ng-ep-scroll-to?style=plastic)
 
+[![codecov](https://codecov.io/gh/Eutrepe/ng-ep-scroll-to/branch/master/graph/badge.svg?token=ZU433DT7BM)](https://codecov.io/gh/Eutrepe/ng-ep-scroll-to)
 
 
 DOCS - soon
