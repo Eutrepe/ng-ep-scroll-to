@@ -13,10 +13,10 @@ jobs:
   - stage: lint
     script:
     - ng lint
-  - stage: test
-    script:
-    - ng test ep-scroll-to --code-coverage --watch=false
-    - npm run report-coverage:lib
+  # - stage: test
+  #   script:
+    # - npm run test:lib-coverage
+    # - npm run report-coverage:lib
   - stage: build & publish showcase
     script:
     - npm run build:demo
