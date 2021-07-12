@@ -2,7 +2,7 @@ Working
 
 
 
-<button [ep-st]="'#test'" epStDuration="1000">test</button>
+<button [ep-st]="'#test'" epStDuration="1000" [epStOnEndScrolling]="onClick.bind(null, 11, 'aa')">test</button>
 
 <section style="height: 40vh; background-color: red;"></section>
 <section id="test" style="height: 40vh; background-color: blude;"></section>
