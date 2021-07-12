@@ -30,7 +30,7 @@
     "start": "ng serve",
     "build": "npm run build:lib && npm run build:demo",
     "test": "ng test",
-    "lint": "ng lint --fix",
+    "lint": "ng lint",
     "e2e": "ng e2e",
     "format:check": "prettier --list-different 'projects/**/*.ts'",
     "format:write": "",
@@ -105,6 +105,7 @@
   "lint-staged": {
     "projects/**/*.ts": [
       "prettier --write",
+      "ng lint --fix",
       "git add"
     ]
   },
