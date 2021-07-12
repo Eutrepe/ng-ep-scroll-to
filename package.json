@@ -1,6 +1,6 @@
 {
   "name": "@eutrepe/ng-ep-scroll-to",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/Eutrepe/ng-ep-scroll-to.git"
@@ -30,7 +30,7 @@
     "start": "ng serve",
     "build": "npm run build:lib && npm run build:demo",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "ng lint --fix",
     "e2e": "ng e2e",
     "format:check": "prettier --list-different 'projects/**/*.ts'",
     "format:write": "",
