@@ -1,11 +1,40 @@
 {
   "name": "ep-scroll-to",
-  "version": "0.9.0",
+  "version": "0.9.6",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eutrepe/ng-ep-scroll-to.git"
+  },
+  "description": "Directive and Service for Angular for scroll to section",
+  "author": "Maciej Bobrowski",
+  "bugs": {
+    "url": "https://github.com/Eutrepe/ng-ep-scroll-to/issues"
+  },
+  "homepage": "https://github.com/Eutrepe/ng-ep-scroll-to#readme",
+  "keywords": [
+    "angular",
+    "javascript",
+    "typescript",
+    "directive",
+    "service",
+    "scroll to"
+  ],
+  "engines": {
+    "node": ">=10.9.0 <= 14.0.0",
+    "yarn": ">=1.22.4 <2"
+  },
+  "license": "MIT",
+  "private": false,
   "peerDependencies": {
     "@angular/common": "^10.2.0",
     "@angular/core": "^10.2.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/",
+    "tag": "latest"
   }
 }
