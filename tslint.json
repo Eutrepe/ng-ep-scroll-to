@@ -70,6 +70,7 @@
     ],
     "semicolon": {
       "options": [
+        true,
         "always"
       ]
     },
