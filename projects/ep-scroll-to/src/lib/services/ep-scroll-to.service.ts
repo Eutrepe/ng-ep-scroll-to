@@ -5,6 +5,7 @@ import { Inject, Injectable, Optional } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Easings } from '../utilities/easings';
 
+/** @dynamic */
 @Injectable({
   providedIn: 'root',
 })
@@ -32,7 +33,7 @@ export class EpScrollToService {
     @Optional() @Inject(SCROLL_TO_GLOBAL_CONFIG) private globalConfig: ScrollToConfig
   ) {
     if (!this.window) {
-      this.window = this.document.defaultView;
+      this.window = this.document.defaultView as Window;
     }
   }
 

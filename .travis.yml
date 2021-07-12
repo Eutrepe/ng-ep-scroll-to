@@ -15,7 +15,7 @@ jobs:
     - ng lint
   - stage: test
     script:
-    - npm run test:lib-coverage
+    - ng test ep-scroll-to --code-coverage --watch=false
     - npm run report-coverage:lib
   - stage: build & publish showcase
     script:
