@@ -23,8 +23,8 @@ export class EpScrollToService {
   private easings = Easings;
   private start: number;
   private startTime: number;
-  private isMoved: boolean = false;
-  private isFinished: boolean = false;
+  private isMoved = false;
+  private isFinished = false;
 
   constructor(
     @Inject(SCROLL_TO_WINDOW) private window: Window,
@@ -88,7 +88,7 @@ export class EpScrollToService {
     this.scroll(this.settings.duration, this.settings.easing, destinationOffsetToScroll, this.settings.onEnd);
   };
 
-  private scroll = (duration: number, easing: string, destinationOffsetToScroll: number, onEnd: Function): void => {
+  private scroll = (duration: number, easing: string, destinationOffsetToScroll: number, onEnd: () => void): void => {
     const now: number = this.window.performance.now();
     const time: number = Math.min(1, (now - this.startTime) / this.settings.duration);
     const timeFunction: number = this.easings[this.settings.easing](time);

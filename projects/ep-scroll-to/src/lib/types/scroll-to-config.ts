@@ -5,4 +5,4 @@ export type ScrollToConfig = {
   onEnd?: (...args: any[] | null) => void;
   onStart?: (...args: any[] | null) => void;
   onBreak?: (...args: any[] | null) => void;
-}
+};

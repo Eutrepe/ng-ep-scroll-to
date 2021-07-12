@@ -1,41 +1,41 @@
 export const Easings = {
-  linear(t) {
+  linear(t: number): number {
     return t;
   },
-  easeInQuad(t) {
+  easeInQuad(t: number): number {
     return t * t;
   },
-  easeOutQuad(t) {
+  easeOutQuad(t: number): number {
     return t * (2 - t);
   },
-  easeInOutQuad(t) {
+  easeInOutQuad(t: number): number {
     return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
   },
-  easeInCubic(t) {
+  easeInCubic(t: number): number {
     return t * t * t;
   },
-  easeOutCubic(t) {
+  easeOutCubic(t: number): number {
     return --t * t * t + 1;
   },
-  easeInOutCubic(t) {
+  easeInOutCubic(t: number): number {
     return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
   },
-  easeInQuart(t) {
+  easeInQuart(t: number): number {
     return t * t * t * t;
   },
-  easeOutQuart(t) {
+  easeOutQuart(t: number): number {
     return 1 - --t * t * t * t;
   },
-  easeInOutQuart(t) {
+  easeInOutQuar(t: number): number {
     return t < 0.5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t;
   },
-  easeInQuint(t) {
+  easeInQuint(t: number): number {
     return t * t * t * t * t;
   },
-  easeOutQuint(t) {
+  easeOutQuint(t: number): number {
     return 1 + --t * t * t * t * t;
   },
-  easeInOutQuint(t) {
+  easeInOutQuint(t: number): number {
     return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
   },
 };
