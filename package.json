@@ -1,6 +1,6 @@
 {
   "name": "@eutrepe/ng-ep-scroll-to",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/Eutrepe/ng-ep-scroll-to.git"
@@ -33,7 +33,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "format:check": "prettier --list-different 'projects/**/*.ts'",
-    "format:write": "",
+    "format:write": "prettier --write 'projects/**/*.ts'",
     "test:lib-coverage": "ng test ep-scroll-to --code-coverage --watch=false",
     "report-coverage:lib": "cat ./coverage/ep-scroll-to/lcov.info | codecov",
     "copy:readme": "copyfiles ./README.md ./projects/ep-scroll-to",
@@ -104,7 +104,7 @@
   },
   "lint-staged": {
     "projects/**/*.ts": [
-
+      "prettier --write",
       "git add"
     ]
   },
