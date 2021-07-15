@@ -81,7 +81,9 @@ export class EpScrollToService {
       this.document.documentElement.clientHeight ||
       this.document.getElementsByTagName('body')[0].clientHeight;
 
-    const destinationOffset: number = (typeof target === 'number' ? target : target.offsetTop) + this.settings.offset;
+    const destinationOffset: number =
+      (typeof target === 'number' ? target : target.getBoundingClientRect().top + this.window.scrollY) +
+      this.settings.offset;
     const destinationOffsetToScroll: number = Math.round(
       documentHeight - destinationOffset < windowHeight ? documentHeight - windowHeight : destinationOffset
     );
